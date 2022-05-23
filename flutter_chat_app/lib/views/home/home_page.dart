@@ -16,7 +16,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.black(),
+      
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: CustomColors.daisyBush(),
+        onPressed: () {},
+        child: Icon(
+          Icons.group_add,
+          color: CustomColors.white(),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -36,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                     style: CustomTextClass.h1Bold(context, Colors.white),
                   ),
                   Icon(
-                    Icons.group_add,
+                    Icons.search,
                     color: CustomColors.primaryColorLight(),
                   ),
                 ],
@@ -102,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                   itemBuilder: (context, index) {
-                    return const ChatTile(
+                    return ChatTile(
                       imageUrl: 'https://images.unsplash.com/phot'
                           'o-1518806118471-f28b20a1d79d?ixlib=rb-1'
                           '.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdl'
@@ -111,6 +119,7 @@ class _HomePageState extends State<HomePage> {
                       lastMessage: 'Lorem ipsum Lorem ipsum 😊😂🤣',
                       lastMessageTime: '16:32',
                       isOnline: true,
+                      messageCounter: index,
                     );
                   },
                 ),

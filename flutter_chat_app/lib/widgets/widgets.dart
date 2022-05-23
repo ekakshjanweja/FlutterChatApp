@@ -10,12 +10,14 @@ class ChatTile extends StatelessWidget {
   final String lastMessage;
   final String lastMessageTime;
   final bool isOnline;
+  final int messageCounter;
   const ChatTile({
     required this.imageUrl,
     required this.name,
     required this.lastMessage,
     required this.lastMessageTime,
     required this.isOnline,
+    required this.messageCounter,
     Key? key,
   }) : super(key: key);
 
@@ -99,14 +101,45 @@ class ChatTile extends StatelessWidget {
           const Spacer(),
           const Spacer(),
 
-          //Last Message Time
+          //End Column
 
-          Text(
-            lastMessageTime,
-            style: CustomTextClass.bodyText(
-              context,
-              CustomColors.white(),
-            ),
+          Column(
+            children: [
+              //Last Message Time
+
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Text(
+                  lastMessageTime,
+                  style: CustomTextClass.bodyText(
+                    context,
+                    CustomColors.white(),
+                  ),
+                ),
+              ),
+
+              //Message Counter
+
+              // ignore: unnecessary_null_comparison
+              messageCounter != 0
+                  ? Container(
+                      alignment: Alignment.center,
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: CustomColors.daisyBush(),
+                      ),
+                      child: Text(
+                        messageCounter.toString(),
+                        style: CustomTextClass.bodyTextSmall(
+                          context,
+                          CustomColors.white(),
+                        ),
+                      ),
+                    )
+                  : Container(),
+            ],
           ),
         ],
       ),

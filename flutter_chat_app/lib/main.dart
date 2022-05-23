@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/views/home/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'constants/custom_colors.dart';
+
 void main(List<String> args) {
   runApp(
     const MyApp(),
@@ -20,8 +22,26 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme),
+      themeMode: ThemeMode.system,
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: CustomColors.white(),
+        textTheme: GoogleFonts.nunitoSansTextTheme(
+          Theme.of(context).textTheme,
+        ),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: CustomColors.daisyBush(),
+          secondary: CustomColors.bittersweet(),
+        ),
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: CustomColors.black(),
+        textTheme: GoogleFonts.nunitoSansTextTheme(
+          Theme.of(context).textTheme,
+        ),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: CustomColors.daisyBush(),
+          secondary: CustomColors.bittersweet(),
+        ),
       ),
       home: const HomePage(),
     );

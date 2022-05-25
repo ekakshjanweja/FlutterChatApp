@@ -57,4 +57,15 @@ class CustomColors {
       ],
     );
   }
+
+  //Check Dark Mode
+
+  bool checkIfDarkModeEnabled(BuildContext context) {
+    bool darkModeEnabled = false;
+    final ThemeData theme = Theme.of(context);
+    if (theme.brightness == Brightness.dark) {
+      darkModeEnabled = true;
+    }
+    return darkModeEnabled;
+  }
 }

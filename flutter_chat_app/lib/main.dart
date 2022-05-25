@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.system,
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: CustomColors.white(),
+        brightness: Brightness.light,
         textTheme: GoogleFonts.nunitoSansTextTheme(
           Theme.of(context).textTheme,
         ),
@@ -35,6 +36,7 @@ class _MyAppState extends State<MyApp> {
       ),
       darkTheme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: CustomColors.black(),
+        brightness: Brightness.dark,
         textTheme: GoogleFonts.nunitoSansTextTheme(
           Theme.of(context).textTheme,
         ),

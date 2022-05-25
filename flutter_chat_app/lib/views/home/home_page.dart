@@ -15,14 +15,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    bool darkModeEnabled = (Theme.of(context).brightness == Brightness.dark);
     return Scaffold(
-      
       floatingActionButton: FloatingActionButton(
         backgroundColor: CustomColors.daisyBush(),
         onPressed: () {},
         child: Icon(
           Icons.group_add,
-          color: CustomColors.white(),
+          color: darkModeEnabled ? CustomColors.white() : CustomColors.white(),
         ),
       ),
       body: SafeArea(
@@ -41,11 +41,18 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                     'Chats',
-                    style: CustomTextClass.h1Bold(context, Colors.white),
+                    style: CustomTextClass.h1Bold(
+                      context,
+                      darkModeEnabled
+                          ? CustomColors.white()
+                          : CustomColors.black(),
+                    ),
                   ),
                   Icon(
                     Icons.search,
-                    color: CustomColors.primaryColorLight(),
+                    color: darkModeEnabled
+                        ? CustomColors.white()
+                        : CustomColors.black(),
                   ),
                 ],
               ),

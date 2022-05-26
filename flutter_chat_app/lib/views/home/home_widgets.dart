@@ -18,6 +18,7 @@ class AddStoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool darkModeEnabled = (Theme.of(context).brightness == Brightness.dark);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -44,7 +45,7 @@ class AddStoryWidget extends StatelessWidget {
           labelText,
           style: CustomTextClass.bodyText(
             context,
-            Colors.white.withOpacity(0.8),
+            darkModeEnabled ? Colors.white : Colors.black,
           ),
         ),
       ],
@@ -69,6 +70,7 @@ class StoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool darkModeEnabled = (Theme.of(context).brightness == Brightness.dark);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -79,13 +81,15 @@ class StoryWidget extends StatelessWidget {
           child: Container(
             width: radius,
             height: radius,
-            padding: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: showBorder
                   ? Border.all(
-                      color: CustomColors.primaryColorLight(),
-                      width: 2,
+                      color: darkModeEnabled
+                          ? CustomColors.primaryColorLight()
+                          : CustomColors.daisyBush(),
+                      width: 3,
                     )
                   : null,
             ),
@@ -110,7 +114,7 @@ class StoryWidget extends StatelessWidget {
           labelText,
           style: CustomTextClass.bodyText(
             context,
-            Colors.white.withOpacity(0.8),
+            darkModeEnabled ? Colors.white : Colors.black,
           ),
         ),
       ],

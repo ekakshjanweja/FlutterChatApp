@@ -23,6 +23,7 @@ class ChatTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool darkModeEnabled = (Theme.of(context).brightness == Brightness.dark);
     return Padding(
       padding: EdgeInsets.symmetric(
           vertical: MediaQuery.of(context).size.height * 0.02),
@@ -84,14 +85,14 @@ class ChatTile extends StatelessWidget {
                   name,
                   style: CustomTextClass.h3Bold(
                     context,
-                    Colors.white,
+                    darkModeEnabled ? Colors.white : Colors.black,
                   ),
                 ),
                 Text(
                   lastMessage,
                   style: CustomTextClass.bodyTextSmall(
                     context,
-                    Colors.white,
+                    darkModeEnabled ? Colors.white : Colors.black,
                   ),
                 ),
               ],
@@ -113,7 +114,7 @@ class ChatTile extends StatelessWidget {
                   lastMessageTime,
                   style: CustomTextClass.bodyText(
                     context,
-                    CustomColors.white(),
+                    darkModeEnabled ? Colors.white : Colors.black,
                   ),
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/views/auth/signup_page.dart';
 import 'package:flutter_chat_app/views/home/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -45,7 +46,7 @@ class _MyAppState extends State<MyApp> {
           secondary: CustomColors.bittersweet(),
         ),
       ),
-      home: const HomePage(),
+      home: const SignUpPage(),
     );
   }
 }

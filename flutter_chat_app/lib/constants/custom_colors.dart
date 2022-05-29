@@ -27,10 +27,18 @@ class CustomColors {
     return const Color(0xFF0A0A0A);
   }
 
+  static Color blackVarOne() {
+    return const Color(0xFF171819);
+  }
+
   //White
 
   static Color white() {
     return const Color(0xFFFCF9F4);
+  }
+
+  static Color whiteVarOne() {
+    return const Color(0xFFECECEC);
   }
 
   //Primary Color Dark

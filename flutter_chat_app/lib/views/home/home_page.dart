@@ -3,7 +3,7 @@ import 'package:flutter_chat_app/constants/custom_colors.dart';
 import 'package:flutter_chat_app/constants/custom_text.dart';
 import 'package:flutter_chat_app/views/home/home_widgets.dart';
 
-import '../../widgets/widgets.dart';
+import '../../widgets/chat_tile_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

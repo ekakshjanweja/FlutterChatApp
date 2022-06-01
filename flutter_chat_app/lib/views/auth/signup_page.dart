@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_chat_app/constants/custom_colors.dart';
 import 'package:flutter_chat_app/constants/custom_text.dart';
+import 'package:flutter_chat_app/views/auth/login_page.dart';
+import 'package:flutter_chat_app/widgets/custom_button.dart';
 import 'package:flutter_chat_app/widgets/custom_input_widget.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -12,16 +15,24 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  //Text Controllers
+
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     bool darkModeEnabled = (Theme.of(context).brightness == Brightness.dark);
     return Scaffold(
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        physics: const BouncingScrollPhysics(),
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.symmetric(
-            vertical: MediaQuery.of(context).size.height * 0.08,
+            vertical: MediaQuery.of(context).size.height * 0.04,
             horizontal: MediaQuery.of(context).size.width * 0.04,
           ),
           child: Stack(
@@ -55,30 +66,89 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
 
-              //Email Textfield
+              //Name Textfield
 
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.3,
-                child: const CustomInput(
+                child: CustomInput(
+                  hintText: 'Name',
+                  isObscure: false,
+                  leadingIcon: const Icon(Icons.email_outlined),
+                  controller: _nameController,
+                ),
+              ),
+
+              //Email Textfield
+
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.45,
+                child: CustomInput(
                   hintText: 'Email',
                   isObscure: false,
-                  leadingIcon: Icon(Icons.email_outlined),
+                  leadingIcon: const Icon(Icons.email_outlined),
+                  controller: _emailController,
                 ),
               ),
 
               //Password Textfield
 
               Positioned(
-                top: MediaQuery.of(context).size.height * 0.45,
-                child: const CustomInput(
+                top: MediaQuery.of(context).size.height * 0.6,
+                child: CustomInput(
                   hintText: 'Password',
                   isObscure: true,
-                  leadingIcon: Icon(Icons.lock_outlined),
+                  leadingIcon: const Icon(Icons.lock_outlined),
+                  controller: _passwordController,
                 ),
               ),
+
               //Sign Up Button
 
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.75,
+                child: CustomButton(
+                  buttonColor: CustomColors.primaryColorLight(),
+                  buttonText: 'Sign Up',
+                  onTap: () {
+                    print('----------- Sign Up Button Clicked -----------');
+                  },
+                ),
+              ),
+
               //Log In Instead
+
+              Positioned(
+                bottom: MediaQuery.of(context).size.height * 0,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LogInPage(),
+                      ),
+                    );
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      /// text: 'Don\'t Have An Account? ',
+                      text: 'Already Have An Account? ',
+                      style: TextStyle(
+                        color: darkModeEnabled ? Colors.white : Colors.black,
+                        fontSize: 16,
+                      ),
+                      children: const <TextSpan>[
+                        TextSpan(
+                          text: 'Login Instead.',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

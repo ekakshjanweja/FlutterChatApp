@@ -6,10 +6,12 @@ class CustomInput extends StatelessWidget {
   final String hintText;
   final bool isObscure;
   final Icon leadingIcon;
+  final TextEditingController controller;
   const CustomInput({
     required this.hintText,
     required this.isObscure,
     required this.leadingIcon,
+    required this.controller,
     Key? key,
   }) : super(key: key);
 
@@ -38,6 +40,11 @@ class CustomInput extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20),
               child: TextField(
                 obscureText: isObscure,
+                controller: controller,
+                style: CustomTextClass.bodyText(
+                  context,
+                  darkModeEnabled ? CustomColors.white() : CustomColors.black(),
+                ),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: hintText,

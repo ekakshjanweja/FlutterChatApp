@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants/custom_colors.dart';
 import 'package:flutter_chat_app/constants/custom_text.dart';
@@ -49,12 +50,37 @@ class _HomePageState extends State<HomePage> {
                           : CustomColors.black(),
                     ),
                   ),
-                  Icon(
-                    Icons.search,
-                    color: darkModeEnabled
-                        ? CustomColors.white()
-                        : CustomColors.black(),
-                  ),
+                  Row(
+                    children: [
+                      //Logout Button
+
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.logout_outlined,
+                          color: darkModeEnabled
+                              ? CustomColors.white()
+                              : CustomColors.black(),
+                        ),
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ),
+
+                      //Search Button
+
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.search,
+                          color: darkModeEnabled
+                              ? CustomColors.white()
+                              : CustomColors.black(),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
 

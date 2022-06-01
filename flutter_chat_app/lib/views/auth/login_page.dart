@@ -5,6 +5,7 @@ import 'package:flutter_chat_app/constants/custom_text.dart';
 import 'package:flutter_chat_app/views/auth/signup_page.dart';
 import 'package:flutter_chat_app/widgets/custom_button.dart';
 import 'package:flutter_chat_app/widgets/custom_input_widget.dart';
+import 'package:flutter_svg/svg.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({Key? key}) : super(key: key);
@@ -99,7 +100,7 @@ class _LogInPageState extends State<LogInPage> {
                 ),
               ),
 
-              //Sign Up Button
+              //Sign In Button
 
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.65,
@@ -107,12 +108,35 @@ class _LogInPageState extends State<LogInPage> {
                   buttonColor: CustomColors.primaryColorLight(),
                   buttonText: 'Login In',
                   onTap: () {
-                    _authClass.signIn(
+                    _authClass.signInWithEmailAndPassword(
                       email: _emailController.text.trim(),
                       password: _passwordController.text.trim(),
                     );
                     print('----------- Log In Button Clicked -----------');
                   },
+                ),
+              ),
+
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.78,
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: CustomColors.primaryColorLight(),
+                    shape: BoxShape.circle,
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      _authClass.signInWitGoogle();
+                    },
+                    child: SvgPicture.asset(
+                      "assets/google_logo.svg",
+                      width: 48,
+                      color: darkModeEnabled
+                          ? CustomColors.blackVarOne()
+                          : CustomColors.whiteVarOne(),
+                    ),
+                  ),
                 ),
               ),
 

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/auth/auth_class.dart';
 import 'package:flutter_chat_app/constants/custom_colors.dart';
 import 'package:flutter_chat_app/constants/custom_text.dart';
 import 'package:flutter_chat_app/views/home/home_widgets.dart';
@@ -17,6 +18,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     bool darkModeEnabled = (Theme.of(context).brightness == Brightness.dark);
+
+    AuthClass _authClass = AuthClass();
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -55,7 +58,9 @@ class _HomePageState extends State<HomePage> {
                       //Logout Button
 
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _authClass.signOut();
+                        },
                         icon: Icon(
                           Icons.logout_outlined,
                           color: darkModeEnabled

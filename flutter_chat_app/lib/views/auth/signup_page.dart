@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_chat_app/auth/auth_class.dart';
 import 'package:flutter_chat_app/constants/custom_colors.dart';
 import 'package:flutter_chat_app/constants/custom_text.dart';
 import 'package:flutter_chat_app/views/auth/login_page.dart';
@@ -20,6 +21,16 @@ class _SignUpPageState extends State<SignUpPage> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  AuthClass _authClass = AuthClass();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +121,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   buttonColor: CustomColors.primaryColorLight(),
                   buttonText: 'Sign Up',
                   onTap: () {
-                    print('----------- Sign Up Button Clicked -----------');
+                    _authClass.signUpWithEmailAndPassword(
+                      name: _nameController.text.trim(),
+                      email: _emailController.text.trim(),
+                      password: _passwordController.text.trim(),
+                    );
                   },
                 ),
               ),

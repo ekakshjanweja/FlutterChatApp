@@ -24,6 +24,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  isUserSignedIn() {}
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,6 +52,20 @@ class _MyAppState extends State<MyApp> {
           secondary: CustomColors.bittersweet(),
         ),
       ),
+      // home: FutureBuilder(
+      //   future: isUserSignedIn(),
+      //   builder: (context, AsyncSnapshot<Widget> snapshot) {
+      //     if (snapshot.hasData) {
+      //       return snapshot.data!;
+      //     }
+      //     return Scaffold(
+      //       body: Center(
+      //         child: CircularProgressIndicator(
+      //             color: CustomColors.primaryColorLight()),
+      //       ),
+      //     );
+      //   },
+      // ),
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {

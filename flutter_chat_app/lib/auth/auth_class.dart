@@ -93,6 +93,7 @@ class AuthClass {
   //Sign Out
 
   Future signOut() async {
+    await GoogleSignIn().signOut();
     await FirebaseAuth.instance.signOut();
   }
 }

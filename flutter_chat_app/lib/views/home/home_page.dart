@@ -6,6 +6,7 @@ import 'package:flutter_chat_app/constants/custom_colors.dart';
 import 'package:flutter_chat_app/constants/custom_text.dart';
 import 'package:flutter_chat_app/views/auth/login_page.dart';
 import 'package:flutter_chat_app/views/home/home_widgets.dart';
+import 'package:flutter_chat_app/views/search_screen.dart';
 
 import '../../widgets/chat_tile_widget.dart';
 
@@ -89,7 +90,14 @@ class _HomePageState extends State<HomePage> {
                       //Search Button
 
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SearchScreen(),
+                            ),
+                          );
+                        },
                         icon: Icon(
                           Icons.search,
                           color: darkModeEnabled

@@ -1,14 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/auth/auth_class.dart';
 import 'package:flutter_chat_app/constants/custom_colors.dart';
 import 'package:flutter_chat_app/constants/custom_text.dart';
+import 'package:flutter_chat_app/views/auth/login_page.dart';
 import 'package:flutter_chat_app/views/home/home_widgets.dart';
 
 import '../../widgets/chat_tile_widget.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,9 +21,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+
     bool darkModeEnabled = (Theme.of(context).brightness == Brightness.dark);
 
-    AuthClass _authClass = AuthClass();
+    AuthClass authClass = AuthClass();
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -59,7 +65,14 @@ class _HomePageState extends State<HomePage> {
 
                       IconButton(
                         onPressed: () {
-                          _authClass.signOut();
+                          authClass.signOut();
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LogInPage(),
+                            ),
+                          );
                         },
                         icon: Icon(
                           Icons.logout_outlined,

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/views/auth/login_page.dart';
-import 'package:flutter_chat_app/views/auth/signup_page.dart';
 import 'package:flutter_chat_app/views/home/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,7 +23,35 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  isUserSignedIn() {}
+  //Check whether the user is siggned in or not
+
+  // Future<Widget> isUserSignedIn() async {
+  //   bool isSignedIn = false;
+  //   FirebaseAuth.instance.authStateChanges().listen((User? user) {
+  //     if (user == null) {
+  //       print('User is currently signed out!');
+  //       isSignedIn = false;
+  //     } else {
+  //       print('User is signed in!');
+  //       isSignedIn = true;
+  //     }
+  //   });
+
+  //   if (isSignedIn) {
+  //     DocumentSnapshot userData = await FirebaseFirestore.instance
+  //         .collection('users')
+  //         .doc(FirebaseAuth.instance.currentUser!.uid)
+  //         .get();
+  //     UserModel userModel = UserModel.fromJson(userData);
+
+  //     return HomePage(
+  //       userModel: userModel,
+  //     );
+  //   } else {
+  //     return const LogInPage();
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

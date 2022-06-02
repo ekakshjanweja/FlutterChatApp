@@ -21,6 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
 
   AuthClass _authClass = AuthClass();
 
@@ -29,142 +30,158 @@ class _SignUpPageState extends State<SignUpPage> {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _phoneNumberController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     bool darkModeEnabled = (Theme.of(context).brightness == Brightness.dark);
-    return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        physics: const BouncingScrollPhysics(),
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.symmetric(
-            vertical: MediaQuery.of(context).size.height * 0.04,
-            horizontal: MediaQuery.of(context).size.width * 0.04,
-          ),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              //Logo
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics(),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 1.2,
+            padding: EdgeInsets.symmetric(
+              vertical: MediaQuery.of(context).size.height * 0.04,
+              horizontal: MediaQuery.of(context).size.width * 0.04,
+            ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                //Logo
 
-              Positioned(
-                top: 0,
-                child: Image.asset(
-                  darkModeEnabled
-                      ? "assets/logo_dark.png"
-                      : "assets/logo_light.png",
-                ),
-              ),
-
-              //Greeting
-
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.2,
-                child: Text(
-                  'WELCOME',
-                  style: CustomTextClass.h1Bold(
-                    context,
-                    CustomColors.primaryColorLight(),
-                  ).copyWith(
-                    fontSize: MediaQuery.of(context).size.height * 0.03,
-                    letterSpacing: 15,
-                    fontWeight: FontWeight.w900,
+                Positioned(
+                  top: 0,
+                  child: Image.asset(
+                    darkModeEnabled
+                        ? "assets/logo_dark.png"
+                        : "assets/logo_light.png",
                   ),
                 ),
-              ),
 
-              //Name Textfield
+                //Greeting
 
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.3,
-                child: CustomInput(
-                  hintText: 'Name',
-                  isObscure: false,
-                  leadingIcon: const Icon(Icons.email_outlined),
-                  controller: _nameController,
-                ),
-              ),
-
-              //Email Textfield
-
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.45,
-                child: CustomInput(
-                  hintText: 'Email',
-                  isObscure: false,
-                  leadingIcon: const Icon(Icons.email_outlined),
-                  controller: _emailController,
-                ),
-              ),
-
-              //Password Textfield
-
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.6,
-                child: CustomInput(
-                  hintText: 'Password',
-                  isObscure: true,
-                  leadingIcon: const Icon(Icons.lock_outlined),
-                  controller: _passwordController,
-                ),
-              ),
-
-              //Sign Up Button
-
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.75,
-                child: CustomButton(
-                  buttonColor: CustomColors.primaryColorLight(),
-                  buttonText: 'Sign Up',
-                  onTap: () {
-                    _authClass.signUpWithEmailAndPassword(
-                      name: _nameController.text.trim(),
-                      email: _emailController.text.trim(),
-                      password: _passwordController.text.trim(),
-                    );
-                  },
-                ),
-              ),
-
-              //Log In Instead
-
-              Positioned(
-                bottom: MediaQuery.of(context).size.height * 0,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  child: Text(
+                    'WELCOME',
+                    style: CustomTextClass.h1Bold(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const LogInPage(),
-                      ),
-                    );
-                  },
-                  child: RichText(
-                    text: TextSpan(
-                      /// text: 'Don\'t Have An Account? ',
-                      text: 'Already Have An Account? ',
-                      style: TextStyle(
-                        color: darkModeEnabled ? Colors.white : Colors.black,
-                        fontSize: 16,
-                      ),
-                      children: const <TextSpan>[
-                        TextSpan(
-                          text: 'Login Instead.',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ],
+                      CustomColors.primaryColorLight(),
+                    ).copyWith(
+                      fontSize: MediaQuery.of(context).size.height * 0.03,
+                      letterSpacing: 15,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                 ),
-              ),
-            ],
+
+                //Name Textfield
+
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 0.3,
+                  child: CustomInput(
+                    hintText: 'Name',
+                    isObscure: false,
+                    leadingIcon: const Icon(Icons.email_outlined),
+                    controller: _nameController,
+                  ),
+                ),
+
+                //Phone Number Textfield
+
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 0.45,
+                  child: CustomInput(
+                    hintText: 'Phone Number',
+                    isObscure: false,
+                    leadingIcon: const Icon(Icons.phone_outlined),
+                    controller: _phoneNumberController,
+                  ),
+                ),
+
+                //Email Textfield
+
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 0.6,
+                  child: CustomInput(
+                    hintText: 'Email',
+                    isObscure: false,
+                    leadingIcon: const Icon(Icons.email_outlined),
+                    controller: _emailController,
+                  ),
+                ),
+
+                //Password Textfield
+
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 0.75,
+                  child: CustomInput(
+                    hintText: 'Password',
+                    isObscure: true,
+                    leadingIcon: const Icon(Icons.lock_outlined),
+                    controller: _passwordController,
+                  ),
+                ),
+
+                //Sign Up Button
+
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 0.9,
+                  child: CustomButton(
+                    buttonColor: CustomColors.primaryColorLight(),
+                    buttonText: 'Sign Up',
+                    onTap: () {
+                      _authClass.signUpWithEmailAndPassword(
+                        name: _nameController.text.trim(),
+                        email: _emailController.text.trim(),
+                        password: _passwordController.text.trim(),
+                        phoneNumber: _phoneNumberController.text.trim(),
+                      );
+                    },
+                  ),
+                ),
+
+                //Log In Instead
+
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 1.05,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LogInPage(),
+                        ),
+                      );
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                        /// text: 'Don\'t Have An Account? ',
+                        text: 'Already Have An Account? ',
+                        style: TextStyle(
+                          color: darkModeEnabled ? Colors.white : Colors.black,
+                          fontSize: 16,
+                        ),
+                        children: const <TextSpan>[
+                          TextSpan(
+                            text: 'Login Instead.',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

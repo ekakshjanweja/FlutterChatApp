@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/auth/auth_class.dart';
 import 'package:flutter_chat_app/constants/custom_colors.dart';
 import 'package:flutter_chat_app/constants/custom_text.dart';
+import 'package:flutter_chat_app/main.dart';
 import 'package:flutter_chat_app/views/auth/signup_page.dart';
+import 'package:flutter_chat_app/views/home/home_page.dart';
 import 'package:flutter_chat_app/widgets/custom_button.dart';
 import 'package:flutter_chat_app/widgets/custom_input_widget.dart';
 import 'package:flutter_svg/svg.dart';
@@ -112,7 +115,6 @@ class _LogInPageState extends State<LogInPage> {
                       email: _emailController.text.trim(),
                       password: _passwordController.text.trim(),
                     );
-                    print('----------- Log In Button Clicked -----------');
                   },
                 ),
               ),
@@ -120,7 +122,7 @@ class _LogInPageState extends State<LogInPage> {
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.78,
                 child: Container(
-                  padding: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: CustomColors.primaryColorLight(),
                     shape: BoxShape.circle,
@@ -131,7 +133,7 @@ class _LogInPageState extends State<LogInPage> {
                     },
                     child: SvgPicture.asset(
                       "assets/google_logo.svg",
-                      width: 48,
+                      width: 32,
                       color: darkModeEnabled
                           ? CustomColors.blackVarOne()
                           : CustomColors.whiteVarOne(),

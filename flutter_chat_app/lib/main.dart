@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/views/auth/login_page.dart';
 import 'package:flutter_chat_app/views/home/home_page.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 import 'constants/custom_colors.dart';

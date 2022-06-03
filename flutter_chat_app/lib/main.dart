@@ -24,40 +24,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  //Check whether the user is siggned in or not
-
-  // Future<Widget> isUserSignedIn() async {
-  //   bool isSignedIn = false;
-  //   FirebaseAuth.instance.authStateChanges().listen((User? user) {
-  //     if (user == null) {
-  //       print('User is currently signed out!');
-  //       isSignedIn = false;
-  //     } else {
-  //       print('User is signed in!');
-  //       isSignedIn = true;
-  //     }
-  //   });
-
-  //   if (isSignedIn) {
-  //     DocumentSnapshot userData = await FirebaseFirestore.instance
-  //         .collection('users')
-  //         .doc(FirebaseAuth.instance.currentUser!.uid)
-  //         .get();
-  //     UserModel userModel = UserModel.fromJson(userData);
-
-  //     return HomePage(
-  //       userModel: userModel,
-  //     );
-  //   } else {
-  //     return const LogInPage();
-  //   }
-  // }
-
+  final colorScheme = ColorScheme.fromSeed(
+    seedColor: CustomColors.primaryColor(),
+  );
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
+      //Theme Mode
       themeMode: ThemeMode.system,
+
+      //Theme
+
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: CustomColors.white(),
         brightness: Brightness.light,
@@ -65,10 +44,13 @@ class _MyAppState extends State<MyApp> {
           Theme.of(context).textTheme,
         ),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: CustomColors.daisyBush(),
-          secondary: CustomColors.bittersweet(),
+          primary: CustomColors.primaryColor(),
+          secondary: CustomColors.accentColor(),
         ),
       ),
+
+      //Dark Theme
+
       darkTheme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: CustomColors.black(),
         brightness: Brightness.dark,
@@ -76,24 +58,13 @@ class _MyAppState extends State<MyApp> {
           Theme.of(context).textTheme,
         ),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: CustomColors.daisyBush(),
-          secondary: CustomColors.bittersweet(),
+          primary: CustomColors.primaryColor(),
+          secondary: CustomColors.accentColor(),
         ),
       ),
-      // home: FutureBuilder(
-      //   future: isUserSignedIn(),
-      //   builder: (context, AsyncSnapshot<Widget> snapshot) {
-      //     if (snapshot.hasData) {
-      //       return snapshot.data!;
-      //     }
-      //     return Scaffold(
-      //       body: Center(
-      //         child: CircularProgressIndicator(
-      //             color: CustomColors.primaryColorLight()),
-      //       ),
-      //     );
-      //   },
-      // ),
+
+      //Home
+
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {

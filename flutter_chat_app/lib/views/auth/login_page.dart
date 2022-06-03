@@ -70,7 +70,7 @@ class _LogInPageState extends State<LogInPage> {
                   'WELCOME',
                   style: CustomTextClass.h1Bold(
                     context,
-                    CustomColors.primaryColorLight(),
+                    CustomColors.primaryColor(),
                   ).copyWith(
                     fontSize: MediaQuery.of(context).size.height * 0.03,
                     letterSpacing: 15,
@@ -108,7 +108,7 @@ class _LogInPageState extends State<LogInPage> {
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.65,
                 child: CustomButton(
-                  buttonColor: CustomColors.primaryColorLight(),
+                  buttonColor: CustomColors.primaryColor(),
                   buttonText: 'Login In',
                   onTap: () {
                     _authClass.signInWithEmailAndPassword(
@@ -124,7 +124,7 @@ class _LogInPageState extends State<LogInPage> {
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: CustomColors.primaryColorLight(),
+                    color: CustomColors.primaryColor(),
                     shape: BoxShape.circle,
                   ),
                   child: GestureDetector(

@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: CustomColors.daisyBush(),
+        backgroundColor: CustomColors.primaryColor(),
         onPressed: () {},
         child: Icon(
           Icons.group_add,
@@ -190,7 +190,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            indicatorColor: CustomColors.daisyBush(),
+            indicatorColor: CustomColors.primaryColor(),
             labelTextStyle: MaterialStateProperty.all(
               CustomTextClass.bodyTextSmall(
                 context,
@@ -200,14 +200,14 @@ class _HomePageState extends State<HomePage> {
         child: NavigationBar(
           selectedIndex: 1,
           backgroundColor: darkModeEnabled
-              ? CustomColors.daisyBush().withOpacity(0.1)
-              : CustomColors.daisyBush().withOpacity(0.1),
+              ? CustomColors.primaryColor().withOpacity(0.1)
+              : CustomColors.primaryColor().withOpacity(0.1),
           height: MediaQuery.of(context).size.height * 0.1,
           destinations: [
             NavigationDestination(
               icon: Icon(
                 Icons.phone_outlined,
-                color: CustomColors.daisyBush(),
+                color: CustomColors.primaryColor(),
               ),
               selectedIcon: Icon(
                 Icons.phone,
@@ -218,7 +218,7 @@ class _HomePageState extends State<HomePage> {
             NavigationDestination(
               icon: Icon(
                 Icons.message_outlined,
-                color: CustomColors.daisyBush(),
+                color: CustomColors.primaryColor(),
               ),
               selectedIcon: Icon(
                 Icons.message,
@@ -229,7 +229,7 @@ class _HomePageState extends State<HomePage> {
             NavigationDestination(
               icon: Icon(
                 Icons.settings_outlined,
-                color: CustomColors.daisyBush(),
+                color: CustomColors.primaryColor(),
               ),
               selectedIcon: Icon(
                 Icons.settings,

@@ -129,7 +129,7 @@ class ChatTile extends StatelessWidget {
                       height: 30,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: CustomColors.daisyBush(),
+                        color: CustomColors.primaryColor(),
                       ),
                       child: Text(
                         messageCounter.toString(),

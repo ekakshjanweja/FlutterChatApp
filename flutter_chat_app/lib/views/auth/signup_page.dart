@@ -71,7 +71,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     'WELCOME',
                     style: CustomTextClass.h1Bold(
                       context,
-                      CustomColors.primaryColorLight(),
+                      CustomColors.primaryColor(),
                     ).copyWith(
                       fontSize: MediaQuery.of(context).size.height * 0.03,
                       letterSpacing: 15,
@@ -133,7 +133,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 Positioned(
                   top: MediaQuery.of(context).size.height * 0.9,
                   child: CustomButton(
-                    buttonColor: CustomColors.primaryColorLight(),
+                    buttonColor: CustomColors.primaryColor(),
                     buttonText: 'Sign Up',
                     onTap: () {
                       _authClass.signUpWithEmailAndPassword(

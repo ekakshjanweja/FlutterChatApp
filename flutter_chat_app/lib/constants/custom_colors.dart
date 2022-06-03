@@ -3,24 +3,6 @@ import 'package:flutter/material.dart';
 class CustomColors {
   CustomColors._();
 
-  //Primary Color
-
-  static Color daisyBush() {
-    return const Color(0xff5A428E);
-  }
-
-  //Dark Cyan
-
-  static Color darkCyan() {
-    return const Color(0xff087E8B);
-  }
-
-  //Bitter Sweet
-
-  static Color bittersweet() {
-    return const Color(0xffFF5A5F);
-  }
-
   //Black
 
   static Color black() {
@@ -41,39 +23,21 @@ class CustomColors {
     return const Color(0xFFECECEC);
   }
 
-  //Primary Color Dark
+  //Primary Color
 
-  static Color primaryColorDark() {
-    return const Color(0xFF311F58);
-  }
-
-  //Primary Color Light
-
-  static Color primaryColorLight() {
+  static Color primaryColor() {
     return const Color(0xFFA283E7);
   }
 
-  //Primary Color Gradient
+  //Primary Color Dark
 
-  static LinearGradient primaryColorGradient() {
-    return LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-      colors: [
-        primaryColorDark(),
-        primaryColorLight(),
-      ],
-    );
+  static Color primaryColorDark() {
+    return const Color(0xff5A428E);
   }
 
-  //Check Dark Mode
+  //Accent Color
 
-  bool checkIfDarkModeEnabled(BuildContext context) {
-    bool darkModeEnabled = false;
-    final ThemeData theme = Theme.of(context);
-    if (theme.brightness == Brightness.dark) {
-      darkModeEnabled = true;
-    }
-    return darkModeEnabled;
+  static Color accentColor() {
+    return const Color(0xffFF5A5F);
   }
 }

@@ -21,7 +21,6 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
- 
   final user = FirebaseAuth.instance.currentUser;
 
   @override
@@ -36,7 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
             Container(
               height: MediaQuery.of(context).size.height * 0.08,
               width: MediaQuery.of(context).size.width,
-              color: CustomColors.daisyBush(),
+              color: CustomColors.primaryColor(),
               child: Row(
                 children: [
                   IconButton(

@@ -31,7 +31,7 @@ class AddStoryWidget extends StatelessWidget {
             height: radius,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: CustomColors.daisyBush(),
+              color: CustomColors.primaryColor(),
 
               //gradient: CustomColors.primaryColorGradient(),
             ),
@@ -87,8 +87,8 @@ class StoryWidget extends StatelessWidget {
               border: showBorder
                   ? Border.all(
                       color: darkModeEnabled
-                          ? CustomColors.primaryColorLight()
-                          : CustomColors.daisyBush(),
+                          ? CustomColors.primaryColor()
+                          : CustomColors.primaryColor(),
                       width: 3,
                     )
                   : null,
@@ -98,7 +98,7 @@ class StoryWidget extends StatelessWidget {
               height: radius,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: CustomColors.daisyBush(),
+                color: CustomColors.primaryColor(),
                 image: DecorationImage(
                   image: NetworkImage(imageUrl),
                   fit: BoxFit.cover,

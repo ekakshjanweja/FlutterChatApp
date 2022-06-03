@@ -149,7 +149,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: CircularProgressIndicator(),
                 ),
               CustomButton(
-                buttonColor: CustomColors.primaryColorLight(),
+                buttonColor: CustomColors.primaryColor(),
                 buttonText: 'Search',
                 onTap: () {
                   onSearch();

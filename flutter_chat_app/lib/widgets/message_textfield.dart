@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants/custom_colors.dart';
 import 'package:flutter_chat_app/constants/custom_text.dart';
 
 class MessagetextField extends StatefulWidget {
-  final String? currentId;
+  final String currentId;
   final String friendId;
   const MessagetextField({
     required this.currentId,
@@ -62,13 +64,18 @@ class _MessagetextFieldState extends State<MessagetextField> {
           ),
           Container(
             decoration: BoxDecoration(
-              color: CustomColors.primaryColorLight(),
+              color: CustomColors.primaryColor(),
               shape: BoxShape.circle,
             ),
             child: IconButton(
               onPressed: () async {
                 String message = _messageController.text;
                 _messageController.clear();
+
+
+
+                //ISMEIN PROBLEM AA RAHI HAI
+
                 await FirebaseFirestore.instance
                     .collection('users')
                     .doc(widget.currentId)
@@ -76,11 +83,11 @@ class _MessagetextFieldState extends State<MessagetextField> {
                     .doc(widget.friendId)
                     .collection('chats')
                     .add({
-                  'senderId': widget.currentId,
-                  'receiverId': widget.friendId,
-                  'message': message,
-                  'type': 'text',
-                  'date': DateTime.now(),
+                  "senderId": widget.currentId,
+                  "receiverId": widget.friendId,
+                  "message": message,
+                  "type": "text",
+                  "date": DateTime.now(),
                 }).then((value) {
                   FirebaseFirestore.instance
                       .collection('users')
@@ -97,22 +104,21 @@ class _MessagetextFieldState extends State<MessagetextField> {
                     .doc(widget.friendId)
                     .collection('messages')
                     .doc(widget.currentId)
-                  ..collection('chats').add({
-                    'senderId': widget.currentId,
-                    'receiverId': widget.friendId,
-                    'message': message,
-                    'type': 'text',
-                    'date': DateTime.now(),
-                  }).then((value) => {
-                        FirebaseFirestore.instance
-                            .collection('users')
-                            .doc(widget.friendId)
-                            .collection('messages')
-                            .doc(widget.currentId)
-                            .set({
-                          'last_message': message,
-                        })
-                      });
+                    .collection("chats")
+                    .add({
+                  "senderId": widget.currentId,
+                  "receiverId": widget.friendId,
+                  "message": message,
+                  "type": "text",
+                  "date": DateTime.now(),
+                }).then((value) {
+                  FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(widget.friendId)
+                      .collection('messages')
+                      .doc(widget.currentId)
+                      .set({"last_message": message});
+                });
               },
               icon: Icon(
                 Icons.send,
